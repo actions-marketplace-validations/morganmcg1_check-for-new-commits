@@ -80,6 +80,9 @@ jobs:
       - name: Run commit check
         run: | 
           output=$(python check_commits.py)
+          
+          output="${output//'%'/'%25'}"
+          
           echo "::set-output name=new_commit::$output"
       #echo "::set-output name=new_commit::$output[0]"
       #echo "::set-output name=latest_commit_date::$output[1]"
