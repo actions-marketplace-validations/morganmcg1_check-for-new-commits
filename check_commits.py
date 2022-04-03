@@ -55,7 +55,5 @@ if __name__ == '__main__':
     repo=repo, 
     file_path=f_path
   )
-  
-  print(f'There are new commits? Response: {new_commits_present}')
-  
-  return (new_commits_present, last_commit_date, commit_message)
+    
+  print(new_commits_present, last_commit_date, commit_message)
