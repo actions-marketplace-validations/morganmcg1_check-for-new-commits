@@ -61,19 +61,19 @@ jobs:
 
 
 
-      # Run checks and set outputs from checks
-      - name: Run commit check
-        run: |
-          output=$(python check_commits.py)
-          output="${output//'%'/'%25'}"
-          output="${output//$'\n'/'%0A'}"
-          output="${output//$'\r'/'%0D'}" 
-          echo "::set-output name=changelog::$output"
-          echo "::set-output name=changelog::$output"
-          echo "::set-output name=changelog::$output"
-        id: step1
-      - name: Print changelog
-        run: echo "${{ steps.step1.outputs.changelog }}"
+#       # Run checks and set outputs from checks
+#       - name: Run commit check
+#         run: |
+#           output=$(python check_commits.py)
+#           output="${output//'%'/'%25'}"
+#           output="${output//$'\n'/'%0A'}"
+#           output="${output//$'\r'/'%0D'}" 
+#           echo "::set-output name=changelog::$output"
+#           echo "::set-output name=changelog::$output"
+#           echo "::set-output name=changelog::$output"
+#         id: step1
+#       - name: Print changelog
+#         run: echo "${{ steps.step1.outputs.changelog }}"
 
 
       # Run checks
@@ -84,12 +84,12 @@ jobs:
       #echo "::set-output name=new_commit::$output[0]"
       #echo "::set-output name=latest_commit_date::$output[1]"
       #echo "::set-output name=latest_commit_message::$output[2]"
-        id: checks
+        id: commit_check
         
       # Print output  
       - name: Print commit check info
         run: |
-          echo "${{ steps.checks.outputs.new_commit }}"
+          echo ${{ steps.commit_check.outputs.new_commit }}
       # echo "${{ steps.checks.outputs.latest_commit_message }}"
         
       # Runs a single command using the runners shell
