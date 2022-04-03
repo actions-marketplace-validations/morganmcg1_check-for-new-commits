@@ -43,6 +43,20 @@ jobs:
       - name: Install Python dependencies
         run: |
           pip install -r requirements.txt
+     
+     
+      # Stackoverflow test
+      - name: Stackoverflow test
+        run: |
+          output=$(python check_commits.py)
+          output="${output//'%'/'%25'}"
+          output="${output//$'\n'/'%0A'}"
+          output="${output//$'\r'/'%0D'}" 
+          echo "::set-output name=changelog::$output"
+        id: step1
+      - name: Print changelog
+        run: echo "${{ steps.step1.outputs.changelog }}"
+
 
       # Run checks
       - name: Run commit check
