@@ -18,7 +18,7 @@ Returns:
 ```
 
 
-You can test this workflow like this with `gh`
+You can test this workflow like this with `gh` in the root of this repo
 
 ```
 gh workflow run action.yml  \\ 
