@@ -56,14 +56,7 @@ if __name__ == '__main__':
     file_path=f_path
   )
   
-  print("new_commits_present")
-  print("last_commit_date")
-  print("commit_message")
-#   print("changelog 1")
-#   print("changelog 2")
-#   print("changelog 3")
+  print(f"{new_commits_present}")
+  print(f"{last_commit_date}")
+  print(f"{commit_message}")
     
-#   print(f'{new_commits_present} || {last_commit_date} || {commit_message}')
-
-
-
