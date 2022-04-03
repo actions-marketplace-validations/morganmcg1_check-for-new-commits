@@ -61,7 +61,7 @@ def check_if_new_commits(ref_datetime, owner, repo, file_path=None):
 if __name__ == '__main__':
   owner = "rwightman"
   repo = "pytorch-image-models"
-  ref_date = "2022-04-01T00:00:00Z"
+  ref_datetime = "2022-04-01T00:00:00Z"
   file_path = "results/results-imagenet.csv"
   
   new_commits_present, last_commit_date, commit_message = check_if_new_commits(
