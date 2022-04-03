@@ -55,10 +55,13 @@ if __name__ == '__main__':
     repo=repo, 
     file_path=f_path
   )
-    
-  print("changelog 1")
-  print("changelog 2")
-  print("changelog 3")
+  
+  print("new_commits_present")
+  print("last_commit_date")
+  print("commit_message")
+#   print("changelog 1")
+#   print("changelog 2")
+#   print("changelog 3")
     
 #   print(f'{new_commits_present} || {last_commit_date} || {commit_message}')
 
