@@ -56,4 +56,11 @@ if __name__ == '__main__':
     file_path=f_path
   )
     
-  print(f'{new_commits_present} || {last_commit_date} || {commit_message}')
+#   print(f'{new_commits_present} || {last_commit_date} || {commit_message}')
+
+#     import sys
+#     print("argument {}".format(sys.argv[1]))
+    print("changelog 1")
+    print("changelog 2")
+    print("changelog 3")
+
