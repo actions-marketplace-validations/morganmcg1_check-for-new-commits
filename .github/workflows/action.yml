@@ -65,5 +65,7 @@ jobs:
       - name: Run commit check
         run: |
           python check_commits.py ${{ github.event.inputs.ref_datetime }} \\
-            ${{ github.event.inputs.owner }} ${{ github.event.inputs.repo }} 
+            ${{ github.event.inputs.owner }} \\
+            ${{ github.event.inputs.repo }} \\
+            ${{ github.event.inputs.file_path }} 
           cat commit_check.txt    
