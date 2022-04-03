@@ -1,0 +1,68 @@
+name: Check for new commits
+description: This action will check for any new commits in a public repository after a given date
+author: Morgan McGuire
+
+# Controls when the workflow will run
+on:
+
+#   # Triggers the workflow on push or pull request events but only for the main branch
+#   push:
+#     branches: [ main ]
+#   pull_request:
+#     branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  
+    # inputs to the runner
+    inputs:
+      repo:
+        description: '(str) Repo name to check for new commits'
+        required: true
+      owner:
+        description: '(str) Owner of github repo'
+        required: true
+      ref_datetime:
+        description: >
+          "(str) Reference date to check for commits since,
+          Must follow the ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ, 
+          e.g. 2022-01-01T00:00:00Z"
+        required: true
+      file_path:
+        description: '(Optional) Check for new commits only for a particular file path'
+        required: false
+
+jobs:
+  check_for_commits:
+    runs-on: ubuntu-latest
+    env:
+      CONTEXT_GITHUB: ${{ toJson(github) }}
+    
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v3
+
+      # setup python
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+    
+      # Configure pip caching
+      - uses: actions/cache@v3
+        name: Configure pip caching
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      
+      # Intall Python dependencies
+      - name: Install Python dependencies
+        run: |
+          pip install -r requirements.txt
+      # Run checks
+      - name: Run commit check
+        run: |
+          python check_commits.py ${{ github.event.inputs.ref_datetime }} ${{ github.event.inputs.owner }} ${{ github.event.inputs.repo }} ${{ github.event.inputs.file_path }} 
+          cat commit_check.txt 
