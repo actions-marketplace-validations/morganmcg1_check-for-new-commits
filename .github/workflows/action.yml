@@ -46,16 +46,20 @@ jobs:
 
       # Run checks
       - name: Run commit check
-        run: | 
-          output=$(python check_commits.py)
-          output="${output//'%'/'%25'}"
-          output="${output//$'\n'/'%0A'}"
-          output="${output//$'\r'/'%0D'}"
-          echo "::set-output name=commit_info::$output"
-        id: commit_check
-        
-      # Print output  
-      - name: Print commit check info
         run: |
-          echo "${{ steps.commit_check.outputs.commit_info }}" > commit_check.txt
-          cat commit_check.txt    
+          python check_commits.py
+          cat commit_check.txt 
+        
+#         | 
+#           output=$(python check_commits.py)
+#           output="${output//'%'/'%25'}"
+#           output="${output//$'\n'/'%0A'}"
+#           output="${output//$'\r'/'%0D'}"
+#           echo "::set-output name=commit_info::$output"
+#         id: commit_check
+        
+#       # Print output  
+#       - name: Print commit check info
+#         run: |
+#           echo "${{ steps.commit_check.outputs.commit_info }}" > commit_check.txt
+#           cat commit_check.txt    
