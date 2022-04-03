@@ -82,6 +82,7 @@ jobs:
           output=$(python check_commits.py)
           
           output="${output//'%'/'%25'}"
+          output="${output//$'\n'/'%0A'}"
           echo "::set-output name=new_commit::$output"
           
 #       output="${output//$'\n'/'%0A'}"
