@@ -94,7 +94,7 @@ jobs:
       # Print output  
       - name: Print commit check info
         run: |
-          echo ${{ steps.commit_check.outputs.new_commit }}
+          echo "${{ steps.commit_check.outputs.new_commit }}"
       # echo "${{ steps.checks.outputs.latest_commit_message }}"
         
       # Runs a single command using the runners shell
