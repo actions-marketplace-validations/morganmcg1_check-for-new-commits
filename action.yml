@@ -1,6 +1,7 @@
 name: Check for new commits
 description: This action will check for any new commits in a public repository after a given date
 author: Morgan McGuire
+icon: bell
 
 # Controls when the workflow will run
 on:
