@@ -45,34 +45,34 @@ def check_if_new_commits(ref_datetime, owner, repo, file_path=None):
         return (new_commits_present, last_commit_date, commit_message)
 
     
-# @call_parse
-# def main(ref_datetime:str,  # The datetime to check since any new commits
-#          owner:str          # The repo owner 
-#          repo:str           # The repo to check commits for
-#          file_path:str=None):    # A specific file path in `repo` to check for commits 
-#     """ref_datetime: (str) The datetime to check the latest commit 
-#             datetime against. Must follow the ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`, 
-#             e.g. "2022-01-01T00:00:00Z" (https://en.wikipedia.org/wiki/ISO_8601) (default: ``)
-#         owner: (str) The owner of the public repository
-#         repo: (str) The name of the public repository
-#         file_path: (str, optional) Check for commits only on a particular filepath (default: `None`)"
-#     """
+@call_parse
+def main(ref_datetime:str,  # The datetime to check since any new commits
+         owner:str,          # The repo owner 
+         repo:str,           # The repo to check commits for
+         file_path:str=None):    # A specific file path in `repo` to check for commits 
+    """ref_datetime: (str) The datetime to check the latest commit 
+            datetime against. Must follow the ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`, 
+            e.g. "2022-01-01T00:00:00Z" (https://en.wikipedia.org/wiki/ISO_8601) (default: ``)
+        owner: (str) The owner of the public repository
+        repo: (str) The name of the public repository
+        file_path: (str, optional) Check for commits only on a particular filepath (default: `None`)"
+    """
     
-if __name__ == '__main__':
-  owner = "rwightman"
-  repo = "pytorch-image-models"
-  ref_datetime = "2022-04-01T00:00:00Z"
-  file_path = "results/results-imagenet.csv"
+# if __name__ == '__main__':
+#   owner = "rwightman"
+#   repo = "pytorch-image-models"
+#   ref_datetime = "2022-04-01T00:00:00Z"
+#   file_path = "results/results-imagenet.csv"
   
-  new_commits_present, last_commit_date, commit_message = check_if_new_commits(
-    ref_datetime=ref_datetime, 
-    owner=owner, 
-    repo=repo, 
-    file_path=file_path
+    new_commits_present, last_commit_date, commit_message = check_if_new_commits(
+        ref_datetime=ref_datetime, 
+        owner=owner, 
+        repo=repo, 
+        file_path=file_path
   )
 
-with open('commit_check.txt', 'w') as f:
-    f.write(f"{new_commits_present}\n")
-    f.write(f"{last_commit_date}\n")
-    f.write(f"{commit_message}")
+    with open('commit_check.txt', 'w') as f:
+        f.write(f"{new_commits_present}\n")
+        f.write(f"{last_commit_date}\n")
+        f.write(f"{commit_message}")
     
