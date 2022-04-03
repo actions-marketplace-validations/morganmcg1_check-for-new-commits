@@ -32,7 +32,7 @@ on:
         required: false
 
 jobs:
-  check:
+  check_for_commits:
     runs-on: ubuntu-latest
     env:
       CONTEXT_GITHUB: ${{ toJson(github) }}
