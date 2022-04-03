@@ -1,4 +1,5 @@
-# check-for-new-commits
+# Action: Check For New Commits
+
 Check for new commits in public repositories periodically. Built using [GhApi](https://ghapi.fast.ai/) and [fastcore](https://fastcore.fast.ai/)
 
 ### Usage
