@@ -12,7 +12,24 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
+  
+    # inputs to the runner
+    inputs:
+      repo:
+        description: '(str) Repo name to check for new commits'
+        required: true
+      owner:
+        description: '(str) Owner of github repo'
+        required: true
+      ref_datetime:
+        description: >
+          "(str) Reference date to check for commits since,
+          Must follow the ISO 8601 format: YYYY-MM-DDTHH:MM:SSZ, 
+          e.g. 2022-01-01T00:00:00Z"
+        required: true
+      file_path:
+        description: '(Optional) Check for new commits only for a particular file path'
+        required: false
 
 jobs:
   check:
@@ -47,19 +64,5 @@ jobs:
       # Run checks
       - name: Run commit check
         run: |
-          python check_commits.py
-          cat commit_check.txt 
-        
-#         | 
-#           output=$(python check_commits.py)
-#           output="${output//'%'/'%25'}"
-#           output="${output//$'\n'/'%0A'}"
-#           output="${output//$'\r'/'%0D'}"
-#           echo "::set-output name=commit_info::$output"
-#         id: commit_check
-        
-#       # Print output  
-#       - name: Print commit check info
-#         run: |
-#           echo "${{ steps.commit_check.outputs.commit_info }}" > commit_check.txt
-#           cat commit_check.txt    
+          python check_commits.py ${{ github.event.inputs.ref_datetime }} ${{ github.event.inputs.owner }} ${{ github.event.inputs.repo }} 
+          cat commit_check.txt    
