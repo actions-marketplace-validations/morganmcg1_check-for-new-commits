@@ -83,6 +83,8 @@ jobs:
           
           output="${output//'%'/'%25'}"
           
+          output="${output//$'\n'/'%0A'}"
+          
           echo "::set-output name=new_commit::$output"
       #echo "::set-output name=new_commit::$output[0]"
       #echo "::set-output name=latest_commit_date::$output[1]"
