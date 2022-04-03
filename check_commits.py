@@ -56,4 +56,4 @@ if __name__ == '__main__':
     file_path=f_path
   )
     
-  print(new_commits_present, last_commit_date, commit_message)
+  print(f'{new_commits_present} || {last_commit_date} || {commit_message}')
