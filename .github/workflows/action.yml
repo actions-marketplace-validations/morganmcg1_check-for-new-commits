@@ -64,5 +64,6 @@ jobs:
       # Run checks
       - name: Run commit check
         run: |
+          echo "Hey!: ${{ github.event.inputs.ref_datetime }}"
           python check_commits.py ${{ github.event.inputs.ref_datetime }} ${{ github.event.inputs.owner }} ${{ github.event.inputs.repo }} 
           cat commit_check.txt    
