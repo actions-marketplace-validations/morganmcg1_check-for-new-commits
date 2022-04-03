@@ -71,13 +71,8 @@ if __name__ == '__main__':
     file_path=file_path
   )
 
-  with open('commit_check.txt', 'w') as f:
-    f.write(f"{new_commits_present}")
-    f.write(f"{last_commit_date}")
+with open('commit_check.txt', 'w') as f:
+    f.write(f"{new_commits_present}\n")
+    f.write(f"{last_commit_date}\n")
     f.write(f"{commit_message}")
-
-  
-#   print(f"{new_commits_present}")
-#   print(f"{last_commit_date}")
-#   print(f"{commit_message}")
     
