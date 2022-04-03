@@ -45,9 +45,19 @@ jobs:
           pip install -r requirements.txt
 
       # Run checks
-      - name: Run scrapers
-        run: python check_commits.py
-
+      - name: Run commit check
+        run: | 
+          output=$(python check_commits.py)
+          echo "::set-output name=new_commit::$output[0]"
+          echo "::set-output name=latest_commit_date::$output[1]"
+          echo "::set-output name=latest_commit_message::$output[2]"
+        id: checks
+        
+      # Print output  
+      - name: Print commit check info
+        run: |
+          echo "${{ steps.checks.outputs.latest_commit_message }}"
+        
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
