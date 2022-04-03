@@ -48,15 +48,17 @@ jobs:
       - name: Run commit check
         run: | 
           output=$(python check_commits.py)
-          echo "::set-output name=new_commit::$output[0]"
-          echo "::set-output name=latest_commit_date::$output[1]"
-          echo "::set-output name=latest_commit_message::$output[2]"
+          echo "::set-output name=new_commit::$output"
+      #echo "::set-output name=new_commit::$output[0]"
+      #echo "::set-output name=latest_commit_date::$output[1]"
+      #echo "::set-output name=latest_commit_message::$output[2]"
         id: checks
         
       # Print output  
       - name: Print commit check info
         run: |
-          echo "${{ steps.checks.outputs.latest_commit_message }}"
+          echo "${{ steps.checks.outputs.new_commit }}"
+      # echo "${{ steps.checks.outputs.latest_commit_message }}"
         
       # Runs a single command using the runners shell
       - name: Run a one-line script
