@@ -1,5 +1,5 @@
 name: Check for new commits
-description: This action will check for any new commits in a public repository after a given date
+description: Checks for any new commits in a public repository after a given date and save the latest commit date and message to a text file.
 author: Morgan McGuire
 branding:
   icon: 'bell'
